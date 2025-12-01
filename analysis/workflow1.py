@@ -2,29 +2,21 @@ from math import *
 
 # read sample files
 
-with open('data1.csv') as file1:
-    lines1 = file1.readlines()
-    data1 = []
-    for line in lines1:
-        row = []
-        for n in line.split(','):
-            row.append(float(n.strip()))
-        data1.append(row)
+def read_csv_to_float_matrix(filename):
+    with open(filename) as file:
+        lines = file.readlines()
+        data = []
+        for line in lines:
+            row = []
+            for n in line.split(','):
+                row.append(float(n.strip()))
+            data.append(row)
+    return data
 
-with open('data2.csv') as file2:
-    lines2 = file2.readlines()
-    data2 = []
-    for line in lines2:
-        row = []
-        for n in line.split(','):
-            row.append(float(n.strip()))
-        data2.append(row)
-
-with open('weights.csv') as filew:
-    linew = filew.read()
-    w = []
-    for n in linew.split(','):
-        w.append(float(n.strip()))
+data1 = read_csv_to_float_matrix('data1.csv')
+data2 = read_csv_to_float_matrix('data2.csv')
+w_matrix = read_csv_to_float_matrix('weights.csv')
+w = w_matrix[0]
 
 results = []
 for i in range(len(data1)):
